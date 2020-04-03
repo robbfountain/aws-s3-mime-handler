@@ -1,15 +1,12 @@
 <?php
 
-
 namespace OneThirtyOne\Mime;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 
-
 /**
- * Class MimeParser
- * @package OneThirtyOne\Mime
+ * Class MimeParser.
  */
 class MessageCollector
 {
@@ -19,11 +16,7 @@ class MessageCollector
     public function fromBucket()
     {
         return Collection::make(Storage::disk('s3')->files())->map(function ($message) {
-
             return Message::fromRaw(Storage::disk('s3')->get($message), $message);
         });
-
     }
-
-
 }
