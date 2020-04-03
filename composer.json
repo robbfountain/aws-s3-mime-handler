@@ -35,5 +35,8 @@
     "require-dev": {
         "orchestra/testbench": "^5.1",
         "phpunit/phpunit": "^8.5"
+    },
+    "suggest": {
+        "onethirtyone/aws-sns-handler": "Validate and handle incoming SNS messages",
     }
 }
