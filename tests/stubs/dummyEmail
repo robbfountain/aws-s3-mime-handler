@@ -1,0 +1,42 @@
+Return-Path: <010001713c6b3134-16a8dccb-26d6-477b-9c16-397fc334ad64-000000@amazonses.com>
+Received: from a8-176.smtp-out.amazonses.com (a8-176.smtp-out.amazonses.com [54.240.8.176])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id 5t55dhkjsh76mh2i46bnu4t7p8lmdlbla56dto01
+ for dummyemail@131studios.com;
+ Thu, 02 Apr 2020 19:43:10 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of amazonses.com designates 54.240.8.176 as permitted sender) client-ip=54.240.8.176; envelope-from=010001713c6b3134-16a8dccb-26d6-477b-9c16-397fc334ad64-000000@amazonses.com; helo=a8-176.smtp-out.amazonses.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of amazonses.com designates 54.240.8.176 as permitted sender) client-ip=54.240.8.176; envelope-from=010001713c6b3134-16a8dccb-26d6-477b-9c16-397fc334ad64-000000@amazonses.com; helo=a8-176.smtp-out.amazonses.com;
+ dkim=pass header.i=@131studios.com;
+ dkim=pass header.i=@amazonses.com;
+ dmarc=none header.from=131studios.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFFZ3M2M0JBT2Nzb3VpUlh3UWZZRDIxUzFML2VSS0xySWJuYkFKb0RoNTh0Vm9SSEVQQVFJcEJLa2JCRGlwRGV2QlNIeXEyMXhBYlV3K2FoUkExbXJidERiSmQ0c2xDMFF2S2pNSS8yRFh5UGlvSks1RFZWV2hERmdBSXVmS2FKZk1jNWRQT2JEKy9qUkltL1kvMEptdzQ3dHZKOFVRUDdYZGlCOXNObEVyQkVPdVZmbzZON1J5RkkraFk2THAySS9YdHh1eEV5NnQzVHdBMWpyeENrMDJoOUtJdU5uL1F3Z2lPTHQ0Ny9WTXdqbVZYbjRHQWlXRE9zQTUxMUJrVVZYeStNUDNpbTNRVENJOE10NVZlcU1MditTc0g2bGRGYTJncEY4Z0xIZE1PN2NxTVFkN0hWY1M1Q3M1WmU4djkxMUsvMkF4cmowZUNGYXdwK3dULzkxa1pTSVQ0VU40RENNcUwra09yQ24yM0JRPT0=
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=dLWKJB8iFBJUN/CFQ27hgXEgBQcPa25EzjJTSeWbbQhW58XqbAqpzgvATm5Zz0R7mZDGx8rgGN5i1IXtv0i8nk/XS4OpEV7hlDnLw4GTZvRhbtupYjKtmT55nS47+EgLvHxTlf32p8yU4VuIDTqmcjozv1cQ8VOKS1pYbGtkKxM=; c=relaxed/simple; s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1585856591; v=1; bh=2/6eJRPfTss8+3jmIaviTPBQrB85snY9hjpxJm8RlqE=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=mxxscs6blzwmnf7o2ugzpmasrrqs6agi; d=blog.131studios.com;
+	t=1585856590;
+	h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date;
+	bh=2/6eJRPfTss8+3jmIaviTPBQrB85snY9hjpxJm8RlqE=;
+	b=aFNQu+Xi96NAQzsnPVKMOQcdpZAXqOW8qV3nC0ZRvVS0fAd/OUrpH6+RFcvoMm2Z
+	ec7Q5NsZkUHIVtDyDBFvONb0b6pRAab1iZEfk/z2tBeINlSQvV2b62PEzk+Lc0PgqoS
+	VHzRZ5CgOwr3Y3SpFpxKPC3VKCGCi9DT/kjq6hk4=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1585856590;
+	h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date:Feedback-ID;
+	bh=2/6eJRPfTss8+3jmIaviTPBQrB85snY9hjpxJm8RlqE=;
+	b=apihEyME06p8xP6ZTkAvQpPaz09ENztmNBhPeb4qN4p//381oeSySNcEbuqRhQ6F
+	LoABJo/tvvQ8HkBWZ1fjCWzyChKVGA93ZnP0XTstlr762VSFQDnhuj5FahpwrV/iPoG
+	N63Ch+PtVpdRq1g4q4Rm8O4UbyVrNDOoKwZaPlM4=
+From: robb@131studios.com
+To: dummyemail@131studios.com
+Subject: Test Message
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Message-ID: <010001713c6b3134-16a8dccb-26d6-477b-9c16-397fc334ad64-000000@email.amazonses.com>
+Date: Thu, 2 Apr 2020 19:43:10 +0000
+X-SES-Outgoing: 2020.04.02-54.240.8.176
+Feedback-ID: 1.us-east-1.lT4M7GMsgM7DkVSixXB6oG+OcY5DlVWm9ONDRgxMdEU=:AmazonSES
+
+Testing this message

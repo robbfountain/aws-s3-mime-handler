@@ -3,19 +3,45 @@
 
 namespace OneThirtyOne\Mime;
 
-
+use Illuminate\Support\Facades\Storage;
+use OneThirtyOne\Mime\Exception\InvalidMimeProperty;
 use ZBateson\MailMimeParser\MailMimeParser;
 
+/**
+ * Class Message
+ * @package OneThirtyOne\Mime
+ */
 class Message
 {
     /**
      * @var null
      */
-    protected $attachments;
+    private $attachments;
+
+    /**
+     * @var null
+     */
+    private $id;
+
+    /**
+     * @var
+     */
     private $from;
+
+    /**
+     * @var
+     */
     private $to;
+
+    /**
+     * @var
+     */
     private $subject;
-    private $message;
+
+    /**
+     * @var
+     */
+    private $body;
 
     /**
      * Message constructor.
@@ -23,19 +49,28 @@ class Message
      * @param      $from
      * @param      $to
      * @param      $subject
-     * @param      $message
+     * @param      $body
      * @param null $attachments
+     * @param null $id
      */
-    public function __construct($from, $to, $subject, $message, $attachments = null)
+    public function __construct($from, $to, $subject, $body, $attachments, $id = null)
     {
         $this->from = $from;
         $this->to = $to;
         $this->subject = $subject;
-        $this->message = $message;
+        $this->body = $body;
         $this->attachments = $attachments;
+        $this->id = $id;
     }
 
-    public static function fromRaw($raw)
+    /**
+     * @param      $raw
+     *
+     * @param null $id
+     *
+     * @return \OneThirtyOne\Mime\Message
+     */
+    public static function fromRaw($raw, $id = null)
     {
         $message = (new MailMimeParser)->parse($raw);
 
@@ -44,15 +79,46 @@ class Message
             $message->getHeader('To')->getValue(),
             $message->getHeaderValue('Subject'),
             $message->getTextContent(),
-            $message->getAllAttachmentParts()
+            $message->getAllAttachmentParts(),
+            $id
         );
     }
 
-    public function subject()
+    /**
+     * @param $property
+     *
+     * @return mixed
+     * @throws \OneThirtyOne\Mime\Exception\InvalidMimeProperty
+     */
+    public function __get($property)
     {
+        if (!property_exists($this, $property)) {
+            throw  new InvalidMimeProperty();
+        }
+
+        return $this->get($property);
     }
 
-    public function message()
+    /**
+     * @param $property
+     *
+     * @return mixed
+     * @throws \OneThirtyOne\Mime\Exception\InvalidMimeProperty
+     */
+    public function get($property)
     {
+        if (!property_exists($this, $property)) {
+            throw  new InvalidMimeProperty();
+        }
+
+        return $this->{$property};
+    }
+
+    /**
+     * Deletes a message from the s3 bucket
+     */
+    public function delete()
+    {
+        Storage::disk('s3')->delete($this->id);
     }
 }

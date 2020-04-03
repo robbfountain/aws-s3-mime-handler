@@ -19,7 +19,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "OneThirtyOne\\Mime\\Tests\\": "tests/"
+            "OneThirtyOne\\Mime\\Tests\\": "tests"
         }
     },
     "extra": {
@@ -28,12 +28,12 @@
                 "OneThirtyOne\\Mime\\MimeServiceProvider"
             ],
             "aliases": {
-                "Mime": "OneThirtyOne\\Mime\\Facades\\Mime"
+                "MessageCollector": "OneThirtyOne\\Mime\\Facades\\MessageCollector"
             }
         }
     },
     "require-dev": {
         "orchestra/testbench": "^5.1",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^8.5"
     }
 }

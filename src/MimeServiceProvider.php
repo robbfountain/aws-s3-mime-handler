@@ -12,8 +12,8 @@ class MimeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('Mime', function(){
-            return new MimeParser();
+        $this->app->bind('message-collector', function(){
+            return new MessageCollector();
         });
     }
 
