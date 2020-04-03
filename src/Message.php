@@ -1,6 +1,5 @@
 <?php
 
-
 namespace OneThirtyOne\Mime;
 
 use Illuminate\Support\Facades\Storage;
@@ -8,8 +7,7 @@ use OneThirtyOne\Mime\Exception\InvalidMimeProperty;
 use ZBateson\MailMimeParser\MailMimeParser;
 
 /**
- * Class Message
- * @package OneThirtyOne\Mime
+ * Class Message.
  */
 class Message
 {
@@ -92,7 +90,7 @@ class Message
      */
     public function __get($property)
     {
-        if (!property_exists($this, $property)) {
+        if (! property_exists($this, $property)) {
             throw  new InvalidMimeProperty();
         }
 
@@ -107,7 +105,7 @@ class Message
      */
     public function get($property)
     {
-        if (!property_exists($this, $property)) {
+        if (! property_exists($this, $property)) {
             throw  new InvalidMimeProperty();
         }
 
@@ -115,7 +113,7 @@ class Message
     }
 
     /**
-     * Deletes a message from the s3 bucket
+     * Deletes a message from the s3 bucket.
      */
     public function delete()
     {
