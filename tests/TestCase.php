@@ -1,6 +1,5 @@
 <?php
 
-
 namespace OneThirtyOne\Mime\Tests;
 
 use OneThirtyOne\Mime\MimeServiceProvider;

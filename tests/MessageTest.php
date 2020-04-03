@@ -1,8 +1,6 @@
 <?php
 
-
 namespace OneThirtyOne\Mime\Tests;
-
 
 use Illuminate\Support\Facades\Storage;
 use OneThirtyOne\Mime\Exception\InvalidMimeProperty;
@@ -18,7 +16,7 @@ class MessageTest extends TestCase
 
         Storage::fake();
 
-        $this->raw = file_get_contents(__DIR__ . '/stubs/dummyEmail');
+        $this->raw = file_get_contents(__DIR__.'/stubs/dummyEmail');
     }
 
     /** @test */
@@ -49,5 +47,4 @@ class MessageTest extends TestCase
 
         $message->foo;
     }
-
 }
