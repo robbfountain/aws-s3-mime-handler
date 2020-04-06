@@ -6,7 +6,8 @@ Fetch and parse MIME messages from your Amazon S3 bucket.
 
 ## Installation
 Require the package with composer.
-```
+
+```bash
 composer require onethirtyone/aws-s3-mime-handler
 ```
 
@@ -32,15 +33,17 @@ MessageCollector::fromBucket()->each(function ($message) {
 });
 ```
 You can delete a message by calling the ```delete()``` method on a message object
+
 ```php
 $message = MessageCollector::fromBucket()->first();
 
 $message->delete();
 ```
 
-
 ## Contributing
 Pull requests are welcome.  For major changes, please open an issue first to discuss what you would like to change
+
+Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
